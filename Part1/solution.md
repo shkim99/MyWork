@@ -13,8 +13,8 @@ $ sudo yum install -y wget
 [centos@cm ~]$ systemctl status firewalld
 Unit firewalld.service could not be found.
 ```
-![Image 000](img/0_1.png)
-* 해당 시스템은 firewa 없음 필요시<br>
+![Image 000](/img/0_1.png)
+* 해당 시스템은 firewalld 없음 필요시<br>
 $ systemctl stop firewalld<br>
 $ systemctl disable firewalld<br>
 
