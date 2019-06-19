@@ -157,6 +157,7 @@ ts        0 0
 [centos@cm ~]$ sudo yum-config-manager --enable
 ```
 ![Image 001](img/1_a_v.PNG)
+
 1.a.vi /etc/passwd  training
 ```
 [centos@cm ~]$ more /etc/passwd | grep training
