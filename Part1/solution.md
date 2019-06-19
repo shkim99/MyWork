@@ -219,3 +219,49 @@ ssh w3 "sudo mkdir -p /usr/share/java; sudo mv ~/mysql-connector-java.jar /usr/s
 
 ```
 ![Image 001_b](img/1_b_2.PNG)
+
+
+### DB 설치
+★ DB Install (Maria DB)
+1) 설치 및 시작
+```
+sudo yum install mariadb-server
+
+sudo systemctl enable mariadb
+sudo systemctl start mariadb
+```
+2) 보안 설정
+```
+sudo /usr/bin/mysql_secure_installation
+```
+3) Create Databases and users for Cloudera manager and eco systems
+```
+mysql -u root -p
+>
+CREATE DATABASE scm DEFAULT CHARACTER SET utf8 DEFAULT COLLATE utf8_general_ci; GRANT ALL ON scm.* TO 'scm'@'%' IDENTIFIED BY 'training';
+CREATE DATABASE amon DEFAULT CHARACTER SET utf8 DEFAULT COLLATE utf8_general_ci; GRANT ALL ON amon.* TO 'amon'@'%' IDENTIFIED BY 'training';
+CREATE DATABASE rmon DEFAULT CHARACTER SET utf8 DEFAULT COLLATE utf8_general_ci; GRANT ALL ON rmon.* TO 'rmon'@'%' IDENTIFIED BY 'training';
+CREATE DATABASE hue DEFAULT CHARACTER SET utf8 DEFAULT COLLATE utf8_general_ci; GRANT ALL ON hue.* TO 'hue'@'%' IDENTIFIED BY 'training';
+CREATE DATABASE metastore DEFAULT CHARACTER SET utf8 DEFAULT COLLATE utf8_general_ci; GRANT ALL ON metastore.* TO 'metastore'@'%' IDENTIFIED BY 'training';
+CREATE DATABASE sentry DEFAULT CHARACTER SET utf8 DEFAULT COLLATE utf8_general_ci; GRANT ALL ON sentry.* TO 'sentry'@'%' IDENTIFIED BY 'training';
+CREATE DATABASE oozie DEFAULT CHARACTER SET utf8 DEFAULT COLLATE utf8_general_ci; GRANT ALL ON oozie.* TO 'oozie'@'%' IDENTIFIED BY 'training';
+FLUSH PRIVILEGES;
+EXIT;
+>
+SHOW DATABASES;
+```
+★ Configure Cloudera Manager to connect to the database
+1)  install cloudera-manager-daemons cloudera-manager-server
+```
+sudo yum install -y cloudera-manager-daemons cloudera-manager-server
+```
+2) Run initialize script for SCM
+```
+sudo /usr/share/cmf/schema/scm_prepare_database.sh mysql scm scm training
+```
+3) Start your Cloudera Manager server
+```
+sudo systemctl start cloudera-scm-server
+
+sudo tail -f /var/log/cloudera-scm-server/cloudera-scm-server.log
+```
