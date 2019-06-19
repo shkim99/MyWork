@@ -13,7 +13,7 @@ $ sudo yum install -y wget
 [centos@cm ~]$ systemctl status firewalld
 Unit firewalld.service could not be found.
 ```
-![Image 000_1](0_1.png)
+![Image 000_1](img/0_1.PNG)
 * 해당 시스템은 firewalld 없음 필요시<br>
 $ systemctl stop firewalld<br>
 $ systemctl disable firewalld<br>
@@ -24,7 +24,7 @@ $ systemctl disable firewalld<br>
 SELinux status:                 disabled
 [centos@cm ~]$ sudo vi /etc/selinux/config
 ```
-![Image 000](img/0_2.png)
+![Image 000](img/0_2.PNG)
 
 4. NTP 설정
 ```
@@ -34,7 +34,7 @@ SELinux status:                 disabled
 [centos@cm ~]$ systemctl enable ntpd
 [centos@cm ~]$ ntpq -p
 ```
-![Image 000](./img/0_3.png)
+![Image 000](./img/0_3.PNG)
 
 5. VM Swappiness 설정
 ```
@@ -50,7 +50,7 @@ sudo vi /etc/sysctl.conf
 - Generate RSA private/public key for the user 'training'
 - Append the public key to '~training/.ssh/authorized_keys'
 - Append OpenSSH formatted private key to '~training/.ssh/id_rsa'
-![Image 000](img/0_6.png)
+![Image 000](img/0_6.PNG)
 
 7. Disable Transparent Hugepage Support
 ```
@@ -82,8 +82,8 @@ skcc:x:3800:1001::/home/skcc:/bin/bash
 [centos@ip-172-31-39-152 ~]$ sudo visudo
 ```
 
-![Image 001](img/1_a_i.png)
-![Image 001](img/1_a_i_2.png)
+![Image 001](img/1_a_i.PNG)
+![Image 001](img/1_a_i_2.PNG)
 
 1.a.ii IP address and DNS
 ```
