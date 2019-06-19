@@ -34,7 +34,7 @@ SELinux status:                 disabled
 [centos@cm ~]$ systemctl enable ntpd
 [centos@cm ~]$ ntpq -p
 ```
-![Image 000](img/0_3.png)
+![Image 000](./img/0_3.png)
 
 5. VM Swappiness 설정
 ```
